@@ -1,4 +1,8 @@
 const https = require('https');
+if (!process.env.BIKEDESK_API_KEY) {
+    console.error("Error: BIKEDESK_API_KEY environment variable is missing.");
+    process.exit(1);
+}
 
 const get = (path) => new Promise((resolve, reject) => {
     const options = {

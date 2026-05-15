@@ -1,6 +1,11 @@
 const https = require('https');
 
 const API_KEY = process.env.BIKEDESK_API_KEY;
+if (!API_KEY) {
+    console.error("Error: BIKEDESK_API_KEY environment variable is missing.");
+    process.exit(1);
+}
+
 const HOST = 'api.c1st.com';
 
 const get = (path) => new Promise((resolve, reject) => {
