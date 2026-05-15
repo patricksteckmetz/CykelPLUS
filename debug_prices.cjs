@@ -36,9 +36,13 @@ async function run() {
 
     console.log(`Found ${templates.content.length} templates. Scanning ALL for materials...`);
 
-    let foundAny = false;
-    for (const t of templates.content) {
+    const results = await Promise.all(templates.content.map(async (t) => {
         const materials = await get(`/ticket-templates/${t.id}/materials`);
+        return { t, materials };
+    }));
+
+    let foundAny = false;
+    for (const { t, materials } of results) {
         if (materials.content && materials.content.length > 0) {
             foundAny = true;
             console.log(`\n[MATCH] Template: ${t.label} (ID: ${t.id}) has ${materials.content.length} materials:`);
