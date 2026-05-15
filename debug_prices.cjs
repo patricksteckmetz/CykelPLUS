@@ -1,6 +1,6 @@
 const https = require('https');
 
-const API_KEY = '59dad428d300a6920fb5356bebe52f109162c528fb3418b3f693d16ee9cf97f57b72c498d31f135532fbdfdeebf420ad10761059ae7fcd51a1b02fa9de0325f2';
+const API_KEY = process.env.BIKEDESK_API_KEY;
 const HOST = 'api.c1st.com';
 
 const get = (path) => new Promise((resolve, reject) => {
