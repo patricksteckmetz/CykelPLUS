@@ -1,19 +1,21 @@
 
-export enum BikeType {
-  CITY = 'Citybike',
-  EL = 'El-cykel',
-  LAD = 'Ladcykel',
-  RACER = 'Racercykel',
-  MTB = 'Mountainbike',
-  EL_LOEBEHJUL = 'El-Løbehjul',
-  SCOOTER = 'Scooter',
-  KABINESCOOTER = 'Kabinescooter',
-}
+export const BikeType = {
+  CITY: 'Citybike',
+  EL: 'El-cykel',
+  LAD: 'Ladcykel',
+  RACER: 'Racercykel',
+  MTB: 'Mountainbike',
+  EL_LOEBEHJUL: 'El-Løbehjul',
+  SCOOTER: 'Scooter',
+  KABINESCOOTER: 'Kabinescooter',
+} as const;
+export type BikeType = typeof BikeType[keyof typeof BikeType];
 
-export enum BookingMethod {
-  DROP_OFF = 'Indlevering i butik',
-  PICKUP = 'Hent og Bring (Sjælland)'
-}
+export const BookingMethod = {
+  DROP_OFF: 'Indlevering i butik',
+  PICKUP: 'Hent og Bring (Sjælland)'
+} as const;
+export type BookingMethod = typeof BookingMethod[keyof typeof BookingMethod];
 
 export type SubscriptionType = 'individual' | 'family';
 
