@@ -1,10 +1,10 @@
-
+import os
 import requests
 import json
 
 url = "https://api.c1st.com/api/ticket-templates"
 headers = {
-    "Authorization": "Bearer 59dad428d300a6920fb5356bebe52f109162c528fb3418b3f693d16ee9cf97f57b72c498d31f135532fbdfdeebf420ad10761059ae7fcd51a1b02fa9de0325f2"
+    "Authorization": f"Bearer {os.environ.get('BIKEDESK_API_KEY')}"
 }
 
 try:

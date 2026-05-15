@@ -6,7 +6,7 @@ const get = (path) => new Promise((resolve, reject) => {
         path: path,
         method: 'GET',
         headers: {
-            'Authorization': 'Bearer 59dad428d300a6920fb5356bebe52f109162c528fb3418b3f693d16ee9cf97f57b72c498d31f135532fbdfdeebf420ad10761059ae7fcd51a1b02fa9de0325f2'
+            'Authorization': 'Bearer ' + process.env.BIKEDESK_API_KEY + ''
         }
     };
     const req = https.request(options, (res) => {
