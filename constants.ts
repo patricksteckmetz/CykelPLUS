@@ -1,5 +1,6 @@
 
-import { Bike, BikeType, User, ServiceItem, SubscriptionPlan, PaymentMethod } from "./types";
+import type { Bike, User, ServiceItem, SubscriptionPlan, PaymentMethod } from "./types.ts";
+import { BikeType } from "./types.ts";
 
 export const PICKUP_PRICE = 149;
 
@@ -196,8 +197,13 @@ export const getDanishHolidays = (year: number): Record<string, string> => {
 
   const easter = new Date(year, month - 1, day);
 
-  // Helper to format
-  const fmt = (d: Date) => d.toISOString().split('T')[0];
+  // Helper to format (Timezone-agnostic YYYY-MM-DD)
+  const fmt = (d: Date) => {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  };
   const addDays = (d: Date, days: number) => {
     const result = new Date(d);
     result.setDate(result.getDate() + days);
